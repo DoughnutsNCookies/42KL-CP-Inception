@@ -7,9 +7,9 @@ RUN		chmod +x wp-cli.phar
 RUN		mv wp-cli.phar /usr/local/bin/wp
 COPY		./conf/www.conf /etc/php/7.3/fpm/pool.d
 RUN		mkdir /run/php
-COPY		./scripts/create_wordpress.sh /usr/local/bin/
-RUN		chmod +x /usr/local/bin/create_wordpress.sh
-ENTRYPOINT	["/usr/local/bin/create_wordpress.sh"]
+COPY		./scripts/wp_setup.sh /usr/local/bin/
+RUN		chmod +x /usr/local/bin/wp_setup.sh
+ENTRYPOINT	["/usr/local/bin/wp_setup.sh"]
 WORKDIR		/var/www/html/
 EXPOSE		9000
 CMD		["/usr/sbin/php-fpm7.3", "-F"]
