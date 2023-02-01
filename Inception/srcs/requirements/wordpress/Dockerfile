@@ -1,6 +1,6 @@
 FROM		debian:buster
 RUN		apt-get update
-RUN		apt-get install -y wget curl bash php php-cgi php-mysql php-fpm php-pdo php-gd php-cli php-mbstring redis php-redis
+RUN		apt-get install -y vim wget curl bash php php-cgi php-mysql php-fpm php-pdo php-gd php-cli php-mbstring redis php-redis
 RUN		rm -rf /var/lib/apt/lists/*
 RUN		curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 RUN		chmod +x wp-cli.phar
