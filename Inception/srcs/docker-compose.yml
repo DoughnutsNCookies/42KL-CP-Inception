@@ -17,11 +17,28 @@ services:
   wordpress:
     container_name: wordpress
     build: ./requirements/wordpress
+    restart: always
+    depends_on:
+      - mariadb
     ports:
       - 9000:9000
-    restart:  always
     volumes:
       - /home/schuah/data/wordpress:/var/www/html
+    env_file:
+      - .env
+    networks:
+      - network
+
+  mariadb:
+    container_name: mariadb
+    build: ./requirements/mariadb
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - /home/schuah/data/mariadb:/var/lib/mysql
+    env_file:
+      - .env
     networks:
       - network
 
@@ -31,6 +48,12 @@ volumes:
     driver_opts:
       type: none
       device: /home/schuah/data/wordpress
+      o: bind
+  wp_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/schuah/data/mysql
       o: bind
 
 networks:
