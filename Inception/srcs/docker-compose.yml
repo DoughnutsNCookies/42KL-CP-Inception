@@ -36,7 +36,7 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - /home/schuah/data/mariadb:/var/lib/mysql
+      - /home/schuah/data/mysql:/var/lib/mysql
     env_file:
       - .env
     networks:
