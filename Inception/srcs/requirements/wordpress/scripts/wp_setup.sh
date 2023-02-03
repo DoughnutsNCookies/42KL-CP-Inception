@@ -14,6 +14,14 @@ else
 	sed -i "s/localhost/$MYSQL_HOSTNAME/g" wp-config-sample.php
 	sed -i "s/database_name_here/$MYSQL_DATABASE/g" wp-config-sample.php
 	cp wp-config-sample.php wp-config.php
+
+	wp config set WP_REDIS_HOST redis --allow-root
+	wp config set WP_REDIS_PORT 6379 --raw --allow-root
+	wp config set WP_CACHE_KEY_SALT $DOMAN_NAME --allow-root
+	wp config set WP_REDIS_CLIENT phpredis --allow-root
+	wp plugin install redis-cache --activate --allow-root
+	wp plugin update --all --allow-root
+	wp redis enable --allow-root
 fi
 
 exec "$@"

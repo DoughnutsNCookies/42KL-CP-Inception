@@ -6,6 +6,7 @@ services:
     build: ./requirements/nginx
     depends_on:
       - wordpress
+      - redis
     ports:
       - 443:443
     restart: always
@@ -37,6 +38,21 @@ services:
       - 3306:3306
     volumes:
       - /home/schuah/data/mysql:/var/lib/mysql
+    env_file:
+      - .env
+    networks:
+      - network
+
+  redis:
+    container_name: redis
+    build: ./requirements/bonus/redis
+    restart: always
+    depends_on:
+      - wordpress
+    ports:
+      - 6379:6379
+    volumes:
+      - /home/schuah/data/wordpress:/var/www/html
     env_file:
       - .env
     networks:
