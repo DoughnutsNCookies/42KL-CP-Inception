@@ -67,6 +67,15 @@ services:
     networks:
       - network
 
+  apache:
+    container_name: apache
+    build: ./requirements/bonus/apache
+    restart: always
+    ports:
+      - 9090:80
+    networks:
+      - network
+
 volumes:
   wp_website:
     driver: local
