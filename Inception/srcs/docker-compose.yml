@@ -7,6 +7,7 @@ services:
     depends_on:
       - wordpress
       - redis
+      - adminer
     ports:
       - 443:443
     restart: always
@@ -73,6 +74,17 @@ services:
     restart: always
     ports:
       - 9090:80
+    networks:
+      - network
+
+  adminer:
+    container_name: adminer
+    build: ./requirements/bonus/adminer
+    restart: always
+    depends_on:
+      - mariadb
+    expose:
+      - 9000
     networks:
       - network
 
