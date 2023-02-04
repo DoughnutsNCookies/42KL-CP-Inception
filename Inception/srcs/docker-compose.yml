@@ -52,8 +52,6 @@ services:
       - wordpress
     ports:
       - 6379:6379
-    volumes:
-      - /home/schuah/data/wordpress:/var/www/html
     env_file:
       - .env
     networks:
@@ -85,6 +83,20 @@ services:
       - mariadb
     expose:
       - 9000
+    networks:
+      - network
+
+  ftp:
+    container_name: ftp
+    build: ./requirements/bonus/ftp
+    restart: always
+    ports:
+      - 21:21
+      - 21100-21110:21100-21110
+    volumes:
+      - /home/schuah/data/wordpress:/var/www/html
+    env_file:
+      - .env
     networks:
       - network
 

@@ -8,4 +8,4 @@ if [ ! -f "/etc/redis/redis/conf/bak" ]; then
 
 fi
 
-redis-server --protected-mode no
+redis-server --protected-mode no --loglevel verbose
