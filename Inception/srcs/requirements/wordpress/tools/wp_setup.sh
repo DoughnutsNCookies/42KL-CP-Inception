@@ -21,7 +21,6 @@ else
 	wp config set WP_REDIS_READ_TIMEOUT 1 --raw --allow-root
 	wp config set WP_REDIS_DATABASE 0 --raw --allow-root
 	wp config set WP_CACHE_KEY_SALT $DOMAN_NAME --allow-root
-#	wp config set WP_REDIS_CLIENT phpredis --allow-root
 	wp plugin install redis-cache --allow-root
 	wp plugin update --all --allow-root
 	wp plugin activate redis-cache --allow-root
