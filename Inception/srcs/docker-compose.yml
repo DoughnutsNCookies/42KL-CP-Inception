@@ -92,6 +92,7 @@ services:
     restart: always
     ports:
       - 21:21
+      - 20:20
       - 21100-21110:21100-21110
     volumes:
       - /home/schuah/data/wordpress:/var/www/html
